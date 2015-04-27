@@ -79,10 +79,11 @@ function createGistList(gistList) {
         contentContainer.appendChild(descripContainer);
         descripContainer.textContent = gistDescription;
 
-        var urlContainer = document.createElement("div");
+        var urlContainer = document.createElement("a");
         urlContainer.id = "urlContainer_g";
         urlContainer.className = "urlContainer";
-        urlContainer.innerHTML = gistUrl;
+        urlContainer.href = gistUrl;
+        urlContainer.text = gistUrl;
         gistContainer.appendChild(urlContainer);
 
         var line = document.createElement("hr");
