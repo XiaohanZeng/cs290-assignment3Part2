@@ -1,4 +1,19 @@
 Start:
+End: Sun, 26 Apr 2015 23:54:10 -0700
+Tasks: refresh gist/favorite after item added/removed
+Start:
+End: Sun, 26 Apr 2015 23:42:20 -0700
+Tasks: add link ofr favortie
+Start:
+End: Sun, 26 Apr 2015 23:40:56 -0700
+Tasks: add link
+Start:
+End: Sun, 26 Apr 2015 23:38:07 -0700
+Tasks: add input illegal check
+Start:
+End: Sun, 26 Apr 2015 23:32:05 -0700
+Tasks: add log.txt
+Start:
 End: Sun, 26 Apr 2015 23:29:53 -0700
 Tasks: remove favorite done
 Start:
