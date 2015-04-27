@@ -186,11 +186,28 @@ function removeToFavoriteOnClick(obj) {
     createGistList(originalGistList);
 }
 
+function searchOnClick() {
+    var searchText = document.getElementById("searchText").value;
+    var searchResultList = [];
+    var count = 0;
+    for (var gist in originalGistList) {
+        var gistNode = originalGistList[gist];
+        var stringNode = JSON.stringify(gistNode);
+        if (stringNode.indexOf(searchText)!=-1)
+        {
+            searchResultList[count] = gistNode;
+            count++;
+        }
+    }
+    createGistList(searchResultList);
+}
+
 window.onload = function () {
     fetchData();
     document.getElementById("enterNum").onclick = function () {
         fetchData();
     }
+    document.getElementById("searchButton").onclick = searchOnClick;
     displayFavorite();
 
 }
