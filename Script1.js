@@ -101,6 +101,17 @@ function fetchGistById(id) {
     return null;
 }
 
+function deleteGistById(id) {
+    for (var gist in originalGistList) {
+        if (originalGistList[gist]["id"] === id)
+        {
+            originalGistList.splice(gist, 1);
+            return;
+        }        
+    }
+    return;
+}
+
 function displayFavorite() {
     var gistLocation = document.getElementById("favBody");
     while (gistLocation.firstChild) {
@@ -160,15 +171,19 @@ function addToFavoriteOnClick(obj) {
     var gist = fetchGistById(id);
     localStorage.setItem("cs290." + id, JSON.stringify(gist));
     displayFavorite();
+    deleteGistById(id);
+    createGistList(originalGistList);
 }
 
 function removeToFavoriteOnClick(obj) {
     var addFavorite = obj.currentTarget;
     var idNode = addFavorite.parentNode.childNodes[1];
     var id = idNode.value;
-    var gist = fetchGistById(id);
-    localStorage.removeItem("cs290." + id);
+    var gist = JSON.parse(localStorage.getItem("cs290." + id));
+    localStorage.removeItem("cs290." + id); 
     displayFavorite();
+    originalGistList.splice(originalGistList.length, 1, gist);
+    createGistList(originalGistList);
 }
 
 window.onload = function () {
