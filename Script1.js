@@ -45,31 +45,36 @@ function createGistList(gistList) {
         var gistUrl = gistList[gist]["url"];
 
         var gistContainer = document.createElement("div");
-        gistContainer.id = "gistContainer";
+        gistContainer.id = "gistContainer_g";
+        gistContainer.className = "gistContainer";
         gistLocation.appendChild(gistContainer);
 
         var contentContainer = document.createElement("div");
-        contentContainer.id = "contentContainer";
+        contentContainer.id = "contentContainer_g";
+        contentContainer.className = "contentContainer";
         gistContainer.appendChild(contentContainer);
 
         var addFavorite = document.createElement("button");
         contentContainer.appendChild(addFavorite);
-        addFavorite.id = "addFavorite";
+        addFavorite.id = "addFavorite_g";
+        addFavorite.className = "gistButton";
         addFavorite.onclick = addToFavoriteOnClick;
 
         var id = document.createElement("INPUT");
         id.setAttribute("type", "hidden");
         id.value = gistList[gist]["id"];
-        id.id = "gistId";
+        id.id = "gistId_g";
         contentContainer.appendChild(id);
 
         var descripContainer = document.createElement("div");
         descripContainer.id = "descripContainer";
+        descripContainer.className = "descripContainer";
         contentContainer.appendChild(descripContainer);
         descripContainer.textContent = gistDescription;
 
         var urlContainer = document.createElement("div");
-        urlContainer.id = "urlContainer";
+        urlContainer.id = "urlContainer_g";
+        urlContainer.className = "urlContainer";
         urlContainer.innerHTML = gistUrl;
         gistContainer.appendChild(urlContainer);
 
@@ -101,15 +106,19 @@ function displayFavorite() {
 
             var gistContainer = document.createElement("div");
             gistContainer.id = "gistContainer_f";
+            gistContainer.className = "gistContainer";
             gistLocation.appendChild(gistContainer);
 
             var contentContainer = document.createElement("div");
             contentContainer.id = "contentContainer_f";
+            contentContainer.className = "contentContainer";
             gistContainer.appendChild(contentContainer);
 
-            var addFavorite = document.createElement("button");
-            contentContainer.appendChild(addFavorite);
-            addFavorite.id = "addFavorite_f";
+            var removeFavorite = document.createElement("button");
+            contentContainer.appendChild(removeFavorite);
+            removeFavorite.id = "removeFavorite_f";
+            removeFavorite.className = "gistButton";
+            removeFavorite.onclick = removeToFavoriteOnClick;
 
             var id = document.createElement("INPUT");
             id.setAttribute("type", "hidden");
@@ -119,11 +128,13 @@ function displayFavorite() {
 
             var descripContainer = document.createElement("div");
             descripContainer.id = "descripContainer_f";
+            descripContainer.className = "descripContainer";
             contentContainer.appendChild(descripContainer);
             descripContainer.textContent = gistDescription;
 
             var urlContainer = document.createElement("div");
             urlContainer.id = "urlContainer_f";
+            urlContainer.className = "urlContainer";
             urlContainer.innerHTML = gistUrl;
             gistContainer.appendChild(urlContainer);
 
@@ -139,6 +150,15 @@ function addToFavoriteOnClick(obj) {
     var id = idNode.value;
     var gist = fetchGistById(id);
     localStorage.setItem("cs290." + id, JSON.stringify(gist));
+    displayFavorite();
+}
+
+function removeToFavoriteOnClick(obj) {
+    var addFavorite = obj.currentTarget;
+    var idNode = addFavorite.parentNode.childNodes[1];
+    var id = idNode.value;
+    var gist = fetchGistById(id);
+    localStorage.removeItem("cs290." + id);
     displayFavorite();
 }
 

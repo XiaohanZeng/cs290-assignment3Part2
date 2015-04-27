@@ -60,15 +60,15 @@ form {
     background-color:lightgray;
 }
 
-#addFavorite{
+.gistButton{
     height: 16px;
     width:16px;
     float:left;
 }
-#descripContainer{
+.descripContainer{
     float:left;
     margin-left:5px;
 }
-#contentContainer{
+.contentContainer{
     height:18px;
 }
