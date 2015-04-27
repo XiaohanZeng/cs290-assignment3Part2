@@ -1,0 +1,74 @@
+﻿#pickLang
+{
+    float:left;
+    width:30%;
+
+}
+#pageNumberContainer
+{
+    float:left;
+    width:30%
+}
+#search 
+{
+    float: left;
+    width: 40%;
+}
+#gist
+{
+      float:left;
+    width:40%; 
+    margin-left:9%;
+    height:100%;
+   margin-right:1%;
+}
+#favorite
+{
+     float:left;
+    width:40%;
+    margin-right:9%;
+    height:100%;
+     margin-left:1%;
+    
+}
+#topPart
+{
+    height:100px;
+}
+#buttomPart
+{
+    height:800px;
+}
+
+form {
+                width:500px;
+                margin:50px auto;
+}
+
+.button:hover  {
+                background-color:#fafafa;
+                color:#207cca;
+}
+.showBlock{
+    float:left;
+    width:40%;
+    background-color:skyblue;
+
+}
+.buttomBody{
+    height:100%;
+    background-color:lightgray;
+}
+
+#addFavorite{
+    height: 16px;
+    width:16px;
+    float:left;
+}
+#descripContainer{
+    float:left;
+    margin-left:5px;
+}
+#contentContainer{
+    height:18px;
+}
