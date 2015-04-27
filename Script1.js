@@ -2,26 +2,33 @@
 var originalGistList = [];
 var fetchData = function () {
     var req = new XMLHttpRequest();
-    if(!req)
-    {
-        throw 'Unable to create HttpRequest.';
-    }
-    var number =parseInt( document.getElementById("pageNum")["value"]);
-    var url = 'https://api.github.com/gists';
-    var params = {
-        per_page: number * 30
-    }
-    url += '?' + urlStringify(params);
     req.onreadystatechange = function () {
         if (this.readyState === 4) {
             originalGistList = JSON.parse(this.responseText);
             createGistList(originalGistList);
-            
+
 
         }
     };
-    req.open('GET', url);
-    req.send();
+    if(!req)
+    {
+        throw 'Unable to create HttpRequest.';
+    }
+    var number = parseInt(document.getElementById("pageNum")["value"]);
+    if (isNaN(number) || number < 1 || number > 5)
+    {
+        alert("Input is illegal");
+    }
+    else {
+        var url = 'https://api.github.com/gists';
+        var params = {
+            per_page: number * 30
+        }
+        url += '?' + urlStringify(params);
+
+        req.open('GET', url);
+        req.send();
+    }
 }
 
 function urlStringify(obj) {
